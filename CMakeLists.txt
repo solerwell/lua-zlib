@@ -6,16 +6,29 @@
 # Please note that the package source code is licensed under its own
 # license.
 
-PROJECT(lua-zlib C)
+# PROJECT(lua-zlib C)
 CMAKE_MINIMUM_REQUIRED (VERSION 2.6)
 
-option(USE_LUA "Use Lua (also called 'C' Lua) includes (default)" ON)
-option(USE_LUAJIT "Use LuaJIT includes instead of 'C' Lua ones (recommended, if you're using LuaJIT, but disabled by default)")
+message("Input--> $RESTY_DIR = ${RESTY_DIR}")
+
+option(USE_LUA "Use Lua (also called 'C' Lua) includes (default)" OFF)
+option(USE_LUAJIT "Use LuaJIT includes instead of 'C' Lua ones (recommended, if you're using LuaJIT, but disabled by default)" ON)
+# set openresty root directory --> luajit & lua_lib directory
+set(RESTY_DIR "/opt/openresty" CACHE STRING "The root directory of openresty installed, it doesn't end in a slash")
+set(LUA_INCLUDE_DIR "${RESTY_DIR}/luajit/include/luajit-2.1" CACHE STRING "")
+set(LUA_LIBRARIES  "${RESTY_DIR}/luajit/lib" CACHE STRING "")
+
 set(USE_LUA_VERSION 5.1 CACHE STRING "Set the Lua version to use (default: 5.1)")
+
+message("$USE_LUA = ${USE_LUA}")
+message("$USE_LUAJIT = ${USE_LUAJIT}")
+message("$LUA_INCLUDE_DIR = ${LUA_INCLUDE_DIR}")
+message("$LUA_LIBRARIES = ${LUA_LIBRARIES}")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 
 if(USE_LUAJIT)
+        message("Using luajit, the system will try to find the package")
 # Find luajit
         find_package(LuaJIT REQUIRED)
         set(USE_LUA OFF)
@@ -23,6 +36,7 @@ if(USE_LUAJIT)
 endif()
 
 if(USE_LUA)
+        message("Using Clua, the system will try to find the package")
 # Find lua
         find_package(Lua ${USE_LUA_VERSION} EXACT REQUIRED)
 # / Find lua
