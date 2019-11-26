@@ -161,3 +161,5 @@ following things are not compatible:
    compatibility mode.
 
 To use this shim add the -DLZLIB_COMPAT compiler flag.
+
+Cmake command: cmake -DRESTY_DIR=<RESTY_INSTALLED_DIR> 
