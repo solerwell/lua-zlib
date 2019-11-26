@@ -1,0 +1,12 @@
+# CMAKE_MINIMUM_REQUIRED (VERSION 2.6)
+# option(USE_LUA "Use Lua (also called 'C' Lua) includes (default)" OFF)
+# option(USE_LUAJIT "Use LuaJIT includes instead of 'C' Lua ones (recommended, if you're using LuaJIT, but disabled by default)" ON)
+# set(RESTY_DIR "/opt/openresty" CACHE STRING "The root directory of openresty installed, it doesn't end in a slash")
+# set(LUA_INCLUDE_DIR "${RESTY_DIR}/luajit/include/luajit-2.1" CACHE STRING "")
+# set(LUA_LIBRARIES  "${RESTY_DIR}/luajit/lib" CACHE STRING "")
+
+message("USE_LUA = ${USE_LUA}")
+message("USE_LUAJIT = ${USE_LUAJIT}")
+message("LUA_INCLUDE_DIR = ${LUA_INCLUDE_DIR}")
+message("LUA_LIBRARIES = ${LUA_LIBRARIES}")
+
